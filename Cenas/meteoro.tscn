@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Scripts/meteoro.gd" type="Script" id=1]
+[ext_resource path="res://png/meteorBig.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 14.2393, -55.1693, 59.5218, -17.0367, 67.4661, 33.0124, 15.0918, 55.8894, -20.9386, 28.7697, -44.9458, -42.0612 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -68.3814, -6.31189, -44.9458, -42.0612, -20.9386, 28.7697, -54.8381, 28.7697 )
+
+[node name="meteoro" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 3 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="colisão" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( -68.3814, -6.31189, -44.9458, -42.0612, 14.2393, -55.1693, 59.5218, -17.0367, 67.4661, 33.0124, 15.0918, 55.8894, -20.9386, 28.7697, -54.8381, 28.7697 )
+shape_range = Vector2( 0, 1 )
+trigger = false
+
+
